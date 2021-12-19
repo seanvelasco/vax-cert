@@ -8,7 +8,7 @@
 		"worker": "webpack dev",
 		"build": "webpack && wrangler build",
 		"start": "webpack serve",
-		"publish": "wrangler build"
+		"publish": "wrangler publish"
 	},
   	"author": "Sean Velasco <seanvelasco@ieee.org>",
   	"license": "MIT",

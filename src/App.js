@@ -67,43 +67,48 @@ function App () {
 	const template = './ManilaCOVAX.pdf';
 
 	const fields = {
+		patientid: "",
 		name: "",
 		age: "",
 		address: "",
-		dose1: {
-			brand: "",
-			date: "",
-			site: "",
-		},
-		dose2: {
-			brand: "",
-			date: "",
-			site: "",
-		}
+		dose1brand: "",
+		dose1date: "",
+		dose1site: "",
+		dose2brand: "",
+		dose2date: "",
+		dose2site: "",
 	};
 	
     const [document, setDocument] = useState(fields)
 
 	const generatePDF = async () => {
 
+		// Load or create PDF files
+
 		const existingPdfBytes = await fetch(template).then(res => res.arrayBuffer())
 		const pdfDoc = await PDFDocument.load(existingPdfBytes)
 		const pages = pdfDoc.getPages()
 		const firstPage = pages[0]
+
+		// Page settings
+
 		const Helvetica = await pdfDoc.embedFont(StandardFonts.Helvetica)
 		const { width, height } = firstPage.getSize()
 		const fontSize = 11
+
+		// Personal details
 
 		firstPage.drawText(`This is to certify that ${document.name}, ${document.age} years of age, a resident of ${document.address}, was fully inoculated by the Manila Health Department.`, {
 			x: 72,
 			y: height - 18 * fontSize,
 			size: fontSize,
 			font: Helvetica,
-			maxWidth: 510,
-			Center: 1,
+			maxWidth: 500,
 		})
 
-		firstPage.drawText(`${document.dose1.brand}`, {
+		// First dose
+
+		firstPage.drawText(`${document.dose1brand}`, {
 			x: 252,
 			y: height - 29.6 * fontSize,
 			size: fontSize,
@@ -111,7 +116,7 @@ function App () {
 			maxWidth: 510,
 		})
 
-		firstPage.drawText(`${document.dose1.date}`, {
+		firstPage.drawText(`${document.dose1date}`, {
 			x: 252,
 			y: height - 31.7 * fontSize,
 			size: fontSize,
@@ -119,7 +124,7 @@ function App () {
 			maxWidth: 510,
 		})
 
-		firstPage.drawText(`${document.dose1.site}`, {
+		firstPage.drawText(`${document.dose1site}`, {
 			x: 252,
 			y: height - 33.7 * fontSize,
 			size: fontSize,
@@ -127,7 +132,9 @@ function App () {
 			maxWidth: 510,
 		})
 
-		firstPage.drawText(`${document.dose2.brand}`, {
+		// Second dose
+
+		firstPage.drawText(`${document.dose2brand}`, {
 			x: 432,
 			y: height - 29.6 * fontSize,
 			size: fontSize,
@@ -135,7 +142,7 @@ function App () {
 			maxWidth: 510,
 		})
 
-		firstPage.drawText(`${document.dose2.date}`, {
+		firstPage.drawText(`${document.dose2date}`, {
 			x: 432,
 			y: height - 31.7 * fontSize,
 			size: fontSize,
@@ -143,7 +150,7 @@ function App () {
 			maxWidth: 510,
 		})
 
-		firstPage.drawText(`${document.dose2.site}`, {
+		firstPage.drawText(`${document.dose2site}`, {
 			x: 432,
 			y: height - 33.7 * fontSize,
 			size: fontSize,
@@ -151,41 +158,56 @@ function App () {
 			maxWidth: 510,
 		})
 
-		firstPage.drawText(`This certificate is issued this ${dateToday()} stircitly for demontration purposes only.`, {
+		// Last paragraph
+
+		firstPage.drawText(`This certificate is issued this ${dateToday()} strictly for demontration purposes only.`, {
 			x: 62,
 			y: height - 45 * fontSize,
 			size: fontSize,
 			font: Helvetica,
 			maxWidth: 510,
 		})
-		// Serialize the PDF document to Uint8Array.
+
+		// Serialize the PDF document to Uint8Array
 
 		const pdfBytes = await pdfDoc.save()
 		
-		// Create an accessible data:blob that can be rendered into an <iframe> element.
+		// Create an accessible data:blob that can be rendered into an <iframe> element
 
 		const blob = new Blob([pdfBytes], {'type': 'application/pdf'});
 		const newURL =  URL.createObjectURL(blob);
+
+		// Update the state of PDF by loading the URL, effectively updating the view
+
 		setPDF(newURL);
 		
 	}
 
+	// Only runs once at the initial render of the webpage
+
 	useEffect(() => {
 		generatePDF();
 	}, [])
+
+	// Runs generatePDF(), which changes the view of the <iframe>, when called by button events
+	// As of of writing, preventDefault() & stopPropagation() are not functional in this React app
 	
 	const handleSubmit = (event) => {
 		event.preventDefault()
-		event.stopPropagation();
+		event.stopPropagation()
 		console.log(event)
 		generatePDF();
 	};
 
+	// NEEDS IMPROVEMENT: Ideally, the state needs to be updated after every field input, not after every keystroke
+
 	const handleInputChange = (event) => {
+
 		setDocument((prevProps) => ({
 			...prevProps,
 			[event.target.name]: event.target.value
 		}))
+		console.log(document)
 	}
 
 	const [PDF, setPDF] = useState();
@@ -198,25 +220,25 @@ function App () {
                 <Form>
 					<div className='group'>
 						<p>Patient number</p>
-						<Field  name='name' value={document.name} onChange={handleInputChange} />
+						<Field  name='patientid' value={document.patientid} onChange={handleInputChange} />
 					</div>
 					<div className='group'>
 						<p>Personal details</p>
 						<Field label='Name' name='name' value={document.name} onChange={handleInputChange} />
-						<Field label='Age' name='age' value={document.name} onChange={handleInputChange} />
-						<Field label='Address' name='address' value={document.name} onChange={handleInputChange} />
+						<Field label='Age' name='age' value={document.age} onChange={handleInputChange} />
+						<Field label='Address' name='address' value={document.address} onChange={handleInputChange} />
 					</div>
 					<div className='group'>
 						<p>1st dose</p>
-						<Field label='Brand' name='name' value={document.name} onChange={handleInputChange} />
-						<Field label='Date administered' name='brand' value={document.name} onChange={handleInputChange} />
-						<Field label='Vaccination site' name='name' value={document.name} onChange={handleInputChange} />
+						<Field label='Brand' name='dose1brand' value={document.dose1brand} onChange={handleInputChange} />
+						<Field label='Date administered' name='dose1date'  value={document.dose1date} onChange={handleInputChange} />
+						<Field label='Vaccination site' name='dose1site' value={document.dose1site} onChange={handleInputChange} />
 					</div>
 					<div className='group'>
 						<p>2nd dose</p>
-						<Field label='Brand' name='name' value={document.name} onChange={handleInputChange} />
-						<Field label='Date administered' name='brand' value={document.name} onChange={handleInputChange} />
-						<Field label='Vaccination site' name='name' value={document.name} onChange={handleInputChange} />
+						<Field label='Brand' name='dose2brand' value={document.dose2brand} onChange={handleInputChange} />
+						<Field label='Date administered' name='dose2date' value={document.dose2date} onChange={handleInputChange} />
+						<Field label='Vaccination site' name='dose2site' value={document.dose2site} onChange={handleInputChange} />
 					</div>
                 </Form>
                 <div className='submission'>
