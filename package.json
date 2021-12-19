@@ -1,0 +1,42 @@
+{
+	"name": "vax-cert",
+	"version": "1.0.0",
+  	"description": "Vaccine certificate generation microservice",
+	"main": "index.js",
+ 	"scripts": {
+		"dev": "webpack-dev-server --mode development --open",
+		"worker": "webpack dev",
+		"build": "webpack && wrangler build",
+		"start": "webpack serve",
+		"publish": "wrangler build"
+	},
+  	"author": "Sean Velasco <seanvelasco@ieee.org>",
+  	"license": "MIT",
+  	"dependencies": {
+		"pdf-lib": "^1.17.1",
+		"react": "^17.0.2",
+		"react-dom": "^17.0.2",
+		"styled-components": "^5.3.3"
+  	},
+	"devDependencies": {
+		"@babel/core": "^7.16.5",
+		"@babel/plugin-transform-runtime": "^7.16.5",
+		"@babel/preset-env": "^7.16.5",
+		"@babel/preset-react": "^7.16.5",
+		"babel-loader": "^8.2.3",
+		"css-loader": "^6.5.1",
+		"html-webpack-plugin": "^4.0.0",
+		"style-loader": "^3.3.1",
+		"webpack": "^5.65.0",
+		"webpack-cli": "^4.9.1",
+		"webpack-dev-server": "^4.6.0"
+	},
+  	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/seanvelasco/vax-cert.git"
+  	},
+  	"bugs": {
+		"url": "https://github.com/seanvelasco/vax-cert/issues"
+	},
+	"homepage": "https://github.com/seanvelasco/vax-cert#readme"
+}
