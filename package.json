@@ -6,7 +6,7 @@
  	"scripts": {
 		"dev": "webpack-dev-server --mode development --open",
 		"worker": "webpack dev",
-		"build": "webpack && wrangler build",
+		"build": "webpack",
 		"build-worker": "wrangler build",
 		"start": "webpack serve",
 		"publish": "wrangler publish"
