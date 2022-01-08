@@ -6,7 +6,6 @@ const Wrapper = styled.form`
 
 const Form = styled.input`
 	font-size: 1em;
-	font-family:'Segoe UI';
 	background-color: #4d4d4d;
 	border-radius: 0.25em;
 	min-height: 40px;
