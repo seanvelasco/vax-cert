@@ -1,6 +1,11 @@
 import styled from 'styled-components';
 
-const Button = styled.button`
+interface ButtonProps {
+    transparent?: boolean;
+    color?: string;
+}
+
+const Button = styled.button<ButtonProps>`
     font-family: Segoe UI Semibold;
     border-radius: 0.25em;
     padding: 1em 2em;

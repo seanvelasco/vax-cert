@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { device } from './constants/device'
 import Button from './components/Button';
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import View from './layout/View'
 import { PDFDocument, StandardFonts, rgb } from 'pdf-lib'
 import dateToday from './utils/dateToday';
@@ -22,7 +22,6 @@ const Wrapper = styled.div`
 				color: darkgrey;
 				:nth-of-type(even) {
 					color: grey;
-					}
 				}
 			}
 		}
@@ -210,7 +209,7 @@ function App () {
 		console.log(document)
 	}
 
-	const [PDF, setPDF] = useState();
+	const [PDF, setPDF] = useState(null);
 	
     return  (
         <>

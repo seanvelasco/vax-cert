@@ -28,11 +28,18 @@ const Textarea = styled(Form).attrs({as: 'textarea'})`
 	resize: none;
 `;
 
-const Field = ({ label, name, value, onChange }) => {
+type Props = {
+	label?: string,
+	name: string,
+	value: string,
+	onChange: (e: React.ChangeEvent<HTMLInputElement>) => void // Not sure if prudent to pass evet as a prop
+}	
+
+const Field = (props: Props) => {
     return (
         <Wrapper>
-            <label>{label}</label>
-            <Input type='text' name={name} value={value} onChange={onChange}></Input>
+            <label>{props.label}</label>
+            <Input type='text' name={props.name} value={props.value} onChange={props.onChange}></Input>
         </Wrapper>
     )
 }
