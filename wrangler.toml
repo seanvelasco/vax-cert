@@ -1,9 +1,0 @@
-name = "vax-cert"
-type = "webpack"
-route = ''
-zone_id = ''
-usage_model = ''
-compatibility_flags = []
-workers_dev = true
-site = {bucket = "./build",entry-point = "workers-site"}
-compatibility_date = "2021-12-19"
