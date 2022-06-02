@@ -6,7 +6,9 @@ interface ButtonProps {
 }
 
 const Button = styled.button<ButtonProps>`
-    font-family: Segoe UI Semibold;
+    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system,
+        BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+    font-weight: bold;
     border-radius: 0.25em;
     padding: 1em 2em;
     margin: auto;
