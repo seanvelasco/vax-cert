@@ -4,12 +4,8 @@
 	"description": "Vaccine certificate generation microservice",
 	"main": "index.js",
 	"scripts": {
-		"dev": "webpack-dev-server --mode development --open",
-		"worker": "webpack dev",
-		"build": "webpack",
-		"build-worker": "wrangler build",
-		"start": "webpack serve",
-		"publish": "wrangler publish"
+		"start": "react-scripts start",
+    	"build": "react-scripts build"
 	},
 	"author": "Sean Velasco <seanvelasco@ieee.org>",
 	"license": "MIT",
