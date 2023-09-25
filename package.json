@@ -11,7 +11,7 @@
   "author": "Sean Velasco <seanvelasco@ieee.org>",
   "license": "MIT",
   "dependencies": {
-    "@types/styled-components": "^5.1.25",
+    
     "pdf-lib": "^1.17.1",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
@@ -19,6 +19,7 @@
     "styled-components": "^5.3.3"
   },
   "devDependencies": {
+    "@types/styled-components": "^5.1.25",
     "@types/node": "^16.11.38",
     "@types/react": "^18.0.10",
     "@types/react-dom": "^18.0.5",
