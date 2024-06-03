@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { device } from '../constants/device';
+import styled from "styled-components"
+import { device } from "../constants/device"
 
 const Sidebar = styled.div`
 	position: relative;
@@ -13,6 +13,6 @@ const Sidebar = styled.div`
 	@media ${device.tablet} {
 		max-width: 400px;
 	}
-`;
+`
 
-export default Sidebar;
+export default Sidebar
