@@ -1,47 +1,45 @@
 {
-  "name": "vax-cert",
-  "version": "1.0.0",
-  "description": "Vaccine certificate generation microservice",
-  "main": "src/index.js",
-  "homepage": ".",
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build"
-  },
-  "author": "Sean Velasco <seanvelasco@ieee.org>",
-  "license": "MIT",
-  "dependencies": {
-    
-    "pdf-lib": "^1.17.1",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0",
-    "react-scripts": "5.0.1",
-    "styled-components": "^5.3.3"
-  },
-  "devDependencies": {
-    "@types/styled-components": "^5.1.25",
-    "@types/node": "^16.11.38",
-    "@types/react": "^18.0.10",
-    "@types/react-dom": "^18.0.5",
-    "typescript": "^4.7.2"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/seanvelasco/vax-cert.git"
-  },
-  "bugs": {
-    "url": "https://github.com/seanvelasco/vax-cert/issues"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+	"name": "vax-cert",
+	"version": "1.0.0",
+	"description": "Vaccine certificate generation",
+	"main": "src/index.js",
+	"scripts": {
+		"start": "react-scripts start",
+		"build": "react-scripts build"
+	},
+	"author": "Sean Velasco <sean@sean.app>",
+	"license": "MIT",
+	"dependencies": {
+		"pdf-lib": "^1.17.1",
+		"react": "^18.1.0",
+		"react-dom": "^18.1.0",
+		"react-scripts": "5.0.1",
+		"styled-components": "^5.3.3"
+	},
+	"devDependencies": {
+		"@types/styled-components": "^5.1.25",
+		"@types/node": "^16.11.38",
+		"@types/react": "^18.0.10",
+		"@types/react-dom": "^18.0.5",
+		"typescript": "^4.7.2"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/seanvelasco/vax-cert.git"
+	},
+	"bugs": {
+		"url": "https://github.com/seanvelasco/vax-cert/issues"
+	},
+	"browserslist": {
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
+	}
 }
